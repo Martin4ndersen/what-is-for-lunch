@@ -1,0 +1,10 @@
+{
+  "frameworks": {
+    "net46":{
+      "dependencies": {
+        "FSharp.Data": "2.3.2",
+        "FSharp.Interop.Dynamic": "3.0.0"
+      }
+    }
+  }
+}
