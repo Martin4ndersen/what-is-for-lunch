@@ -6,6 +6,7 @@ open System
 open System.Globalization
 open System.Net
 open System.Net.Http
+open System.Text
 
 type provider = JsonProvider<""" {"results": [{ "dag": "Day", "rett": "Dish" }] }""">
 
@@ -26,6 +27,8 @@ let Run(req: HttpRequestMessage) =
                 |> Array.filter (fun item -> item.Dag = day) 
                 |> Array.map (fun item -> item.Rett)  
                 |> String.concat " "
+                |> Encoding.Default.GetBytes
+                |> Encoding.UTF8.GetString
                 |> sprintf "%s: %s" day 
 
         return req.CreateResponse(HttpStatusCode.OK, dayDish)
